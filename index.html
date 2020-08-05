@@ -27,13 +27,13 @@
     <br>
     <main>
         <h1 class="text-center">Administración</h1>
-        <img src="./imagenes/ppal.jpg" alt="" id="imgPpal">
+        <div class="container"><img src="./imagenes/ppal.jpg" alt="" id="imgPpal"></div>
     </main>
     <br>
-    <!-- <section>
-        <fieldset id="fieldset" class="border border-info px-3 py-3">
+    <div class="container col-7">
+        <fieldset id="fieldset" class="border border-info px-3 ">
             <legend>Informacion Del Anuncio</legend>
-            <form action="" id="formulario" class="mt-3">
+            <form action="" id="formulario">
                 <div class="form-group">
                     <label for="txtTitulo">Titulo</label>
                     <input type="text" id="txtTitulo" class="form-control" placeholder="Titulo">
@@ -45,14 +45,14 @@
                 </div>
 
                 <label >Animal</label>                    
-                <div class="form-group form-inline offset-4 my-0">
-                    <div class="form-check">
+                <div class="form-group form-inline my-0 justify-content-center">
+                    <div class="form-check mr-3">
                         <input type="radio" name="tipoAnimales" id="radioPerro" class="form-check-input" value="perro">
                         <label for="" class="form-check-label">Perro</label>
                     </div>
 
                     <div class="form-check">
-                        <input type="radio" name="tipoAnimales" class="form-check-input ml-3" id="radioGato" value="gato">
+                        <input type="radio" name="tipoAnimales" class="form-check-input" id="radioGato" value="gato">
                         <label for="" class="form-check-label">Gato</label>
                     </div>
                 </div>                    
@@ -61,13 +61,13 @@
                 <input type="text" id="txtPrecio" class="form-control" placeholder="Precio">
 
 
-                <div class="ultOpcionesFormulario my-4">
-                    <div class="divIconos col-4 p-0"> <img class="iconos" src="./imagenes/iconoRaza.png" alt=""><input type="text" id="txtRaza" class="form-control ml-1" placeholder="Raza"></div>
+                <div class="my-4 d-flex justify-content-center flex-direction: row">
+                    <div class="divIconos col-8"> <img class="iconos mr-3" src="./imagenes/iconoRaza.png" alt=""><input type="text" id="txtRaza" class="form-control ml-1" placeholder="Raza"></div>
                     
-                    <div class="divIconos col-5 p-0 mx-2"><img class="iconos" src="./imagenes/iconoFecha.svg" alt=""> <input type="date" name="" class="form-control ml-1" id="dateFecha"></div>
+                    <div class="divIconos col-8 my-3"><img class="iconos mr-3" src="./imagenes/iconoFecha.svg" alt=""> <input type="date" name="" class="form-control ml-1" id="dateFecha"></div>
                     
-                    <div class="divIconos col-3 p-0 ">
-                        <img src="./imagenes/iconoVacuna.png" class="iconos mr-1" alt="">
+                    <div class="divIconos col-8 ">
+                        <img src="./imagenes/iconoVacuna.png" class="iconos mr-3" alt="">
                         <select name="" id="" class="form-control p-0">
                             <option value="vacio">--vacuna--</option>
                             <option value="si">Si</option>
@@ -78,8 +78,8 @@
             </form>
 
         </fieldset><br>
-            <button type="button" id="btnGuardar" class="btn btn-primary"><img src="./imagenes/iconoGuardar.png" alt="" class="iconos mr-1"> Guardar</button>
-    </section> -->
+            <button type="button" id="btnGuardar" class="btn btn-primary"><img src="./imagenes/iconoGuardar.png" alt="" class="iconos mr-1"> Guardar</button>        
+    </div>
     <br>
 
     <div id="botonesModificar">
@@ -90,7 +90,7 @@
     <br>
 
     <div class="container">
-        <div class="row bg-secondary px-5 border border-dark align-items-center" style="height: 150px;">
+        <div class="row bg-secondary p-2 border border-dark align-items-center" >
             
             <div class="col-md-6 ">
                 <fieldset class="form-group">
@@ -162,7 +162,7 @@
         </div>
     </div>
     <br>
-    <section id="contenedorTabla"></section>
+    <section id="contenedorTabla" class="container"></section>
 
     <br>
     <div id="paraSpinner"></div>
