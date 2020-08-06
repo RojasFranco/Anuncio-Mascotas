@@ -29,39 +29,8 @@ let tiposAnimales = document.getElementsByName("tipoAnimales");
 
 let botonesModificar = document.getElementById("botonesModificar");
 
-
-/****************** TRAER DATOS *******************/
-/*function TraerDatos(){
-
-    //tabla.classList.add("miTabla");
-    
-    let xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function(){
-        miSpinner.setAttribute("src", srcMiSpinner);
-        if(xhr.readyState==4){
-            miSpinner.removeAttribute("src");
-            if(xhr.status==200){            
-                let rtaXhr = xhr.response;
-                let rtaJson = JSON.parse(rtaXhr);
-                datos = rtaJson.data;
-                console.log(rtaJson.message);
-                CrearTablaConDatos(datos);
-                let tdsTabla = document.getElementsByTagName("td");
-                cargarEventosTdsTabla(tdsTabla);
-            }
-            else{
-                console.log("HUBO ERROR AL CARGAR");
-            }
-        }
-    }
-
-    xhr.open("GET", "http://localhost:3000/traer");
-    xhr.setRequestHeader("content-type", "application/json");
-    xhr.send();
-}*/
 let listaMascotas = [];
-function TraerDatos(){
-    tabla.classList.add("table", "table-dark", "border", "text-center");
+function TraerDatos(){    
     if(!localStorage.getItem("listaMascotas")){
         localStorage.setItem("listaMascotas", JSON.stringify(listaMascotas));
     }        
@@ -100,7 +69,8 @@ function CrearTablaConDatos(datosTabla){
       }
       tabla.appendChild(tr);
     })
-    contenedorTabla.appendChild(tabla);
+    contenedorTabla.appendChild(tabla);    
+    tabla.classList.add("table", "table-responsive", "text-center", "table-dark");
 }
 
 

@@ -13,7 +13,7 @@
 </head>
 <body>
     <header class="container-fluid row align-items-center">
-        <div class="col-sm"><img id="imgHeader" class="m-0" src="./imagenes/header.jpg" alt=""></div>   
+        <div class="col-2 "><img id="imgHeader" class="m-0" src="./imagenes/header.jpg" alt=""></div>   
         <nav class="  col-4-sm">
             <div class="enlacesHeader">                
                 <a href="./nosotros.html">Nosotros</a>
@@ -27,10 +27,10 @@
     <br>
     <main>
         <h1 class="text-center">Administración</h1>
-        <div class="container"><img src="./imagenes/ppal.jpg" alt="" id="imgPpal"></div>
+        <div class="container text-center"><img src="./imagenes/ppal.jpg" alt="" id="imgPpal"></div>
     </main>
     <br>
-    <div class="container col-7">
+    <div class="container col-8">
         <fieldset id="fieldset" class="border border-info px-3 ">
             <legend>Informacion Del Anuncio</legend>
             <form action="" id="formulario">
@@ -61,14 +61,14 @@
                 <input type="text" id="txtPrecio" class="form-control" placeholder="Precio">
 
 
-                <div class="my-4 d-flex justify-content-center flex-direction: row">
-                    <div class="divIconos col-8"> <img class="iconos mr-3" src="./imagenes/iconoRaza.png" alt=""><input type="text" id="txtRaza" class="form-control ml-1" placeholder="Raza"></div>
+                <div class="row justify-content-center my-4" id="ultIconosForm">
+                    <div class="divIconos col-sm-8 col-10"> <img class="iconos mr-3" src="./imagenes/iconoRaza.png" alt=""><input type="text" id="txtRaza" class="form-control ml-1 col-12" placeholder="Raza"></div>
                     
-                    <div class="divIconos col-8 my-3"><img class="iconos mr-3" src="./imagenes/iconoFecha.svg" alt=""> <input type="date" name="" class="form-control ml-1" id="dateFecha"></div>
+                    <div class="divIconos col-sm-8 col-10 my-3"><img class="iconos mr-3" src="./imagenes/iconoFecha.svg" alt=""> <input type="date" name="" class="form-control ml-1 col-12" id="dateFecha"></div>
                     
-                    <div class="divIconos col-8 ">
+                    <div class="divIconos col-sm-8 col-10">
                         <img src="./imagenes/iconoVacuna.png" class="iconos mr-3" alt="">
-                        <select name="" id="" class="form-control p-0">
+                        <select name="" id="idVacuna" class="form-control p-0 col-12">
                             <option value="vacio">--vacuna--</option>
                             <option value="si">Si</option>
                             <option value="no">No</option>
