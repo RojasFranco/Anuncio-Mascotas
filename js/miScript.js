@@ -28,6 +28,7 @@ let vacunaAplicada;
 let tiposAnimales = document.getElementsByName("tipoAnimales");
 
 let botonesModificar = document.getElementById("botonesModificar");
+let opcionesCheck = document.getElementsByName("checkMostrar");
 
 let listaMascotas = [];
 function TraerDatos(){    
@@ -36,9 +37,8 @@ function TraerDatos(){
     }        
     else{
         listaMascotas=JSON.parse(localStorage.getItem("listaMascotas"));
-        CrearTablaConDatos(listaMascotas);    
-        let tdsTabla = document.getElementsByTagName("td");
-        cargarEventosTdsTabla(tdsTabla);
+        CrearTablaConDatos(listaMascotas);  
+        MapearCheckeados();  
     }
 }
 
@@ -71,6 +71,8 @@ function CrearTablaConDatos(datosTabla){
     })
     contenedorTabla.appendChild(tabla);    
     tabla.classList.add("table", "table-responsive", "text-center", "table-dark");
+    let tdsTabla = document.getElementsByTagName("td");
+    cargarEventosTdsTabla(tdsTabla);
 }
 
 
@@ -170,33 +172,40 @@ function cargarEventosTdsTabla(tdsTabla){
             //let elementoIdBuscado = elementoPadre.firstElementChild;
             //retornoId = elementoIdBuscado.textContent;
             botonesModificar.style.display = "flex";
-            LlenarFormularioSegunElementoPadre(elementoPadre);
+            btnAlta.style.display = "none";
+            idAnuncio = elementoPadre.firstElementChild.textContent;
+            LlenarFormulario(idAnuncio);
+            // LlenarFormularioSegunElementoPadre(elementoPadre);
         })
         
     }
 }
 
-function LlenarFormularioSegunElementoPadre(elementoPadre){
-    idAnuncio = elementoPadre.children[0].textContent;
+function LlenarFormulario(idBuscado){
+    let mascotaSeleccionada;
+    for (let index = 0; index < listaMascotas.length; index++) {
+        const mascotaActual = listaMascotas[index];
+        if(mascotaActual.id==idBuscado){
+            mascotaSeleccionada = mascotaActual;
+            break;
+        }
+    }
+    document.getElementById("txtTitulo").value = mascotaSeleccionada.titulo;
 
+    document.getElementById("txtDescripcion").value = mascotaSeleccionada.descripcion;
 
-    document.getElementById("txtTitulo").value = elementoPadre.children[1].textContent;
-
-    document.getElementById("txtDescripcion").value = elementoPadre.children[3].textContent;
-    document.getElementById("txtPrecio").value = elementoPadre.children[4].textContent;
+    document.getElementById("txtPrecio").value = mascotaSeleccionada.precio;
     
-    tipoAnimal = elementoPadre.children[5].textContent;
+    tipoAnimal = mascotaSeleccionada.animal;
     tiposAnimales.forEach(element => {
         if(element.value == tipoAnimal){
            element.setAttribute("checked", "true");
         }
-    })
-    
-    document.getElementById("txtRaza").value = elementoPadre.children[6].textContent;
-    document.getElementById("dateFecha").value = elementoPadre.children[7].textContent;
-
+    });
+    document.getElementById("txtRaza").value = mascotaSeleccionada.raza;
+    document.getElementById("dateFecha").value = mascotaSeleccionada.fecha_nacimiento;
     //VACUNAAA8
-    vacunaAplicada = elementoPadre.children[8].textContent;    
+    vacunaAplicada = mascotaSeleccionada.vacuna;    
     for (let index = 0; index < vacunas.length; index++) {
         const element = vacunas[index];
         if(element.value == vacunaAplicada){
@@ -208,6 +217,39 @@ function LlenarFormularioSegunElementoPadre(elementoPadre){
     }
 
 }
+
+// function LlenarFormularioSegunElementoPadre(elementoPadre){
+//     idAnuncio = elementoPadre.children[0].textContent;
+
+
+//     document.getElementById("txtTitulo").value = elementoPadre.children[1].textContent;
+
+//     document.getElementById("txtDescripcion").value = elementoPadre.children[3].textContent;
+//     document.getElementById("txtPrecio").value = elementoPadre.children[4].textContent;
+    
+//     tipoAnimal = elementoPadre.children[5].textContent;
+//     tiposAnimales.forEach(element => {
+//         if(element.value == tipoAnimal){
+//            element.setAttribute("checked", "true");
+//         }
+//     })
+    
+//     document.getElementById("txtRaza").value = elementoPadre.children[6].textContent;
+//     document.getElementById("dateFecha").value = elementoPadre.children[7].textContent;
+
+//     //VACUNAAA8
+//     vacunaAplicada = elementoPadre.children[8].textContent;    
+//     for (let index = 0; index < vacunas.length; index++) {
+//         const element = vacunas[index];
+//         if(element.value == vacunaAplicada){
+//             element.setAttribute("selected", "true");
+//         }
+//         if(element.value !=vacunaAplicada){
+//             element.removeAttribute("selected");
+//         }
+//     }
+
+// }
     
 
 
@@ -218,6 +260,7 @@ let btnCancelar = document.getElementById("btnCancelar");
 btnCancelar.addEventListener("click", function(){
     formulario.reset();
     botonesModificar.style.display = "none";
+    btnAlta.style.display = "flex";
 })
 
 
@@ -232,6 +275,7 @@ btnEliminar.addEventListener("click", function(){
     TraerDatos();
     formulario.reset();
     botonesModificar.style.display = "none";
+    btnAlta.style.display = "flex";
 })
 
 function EliminarObjeto(idABorrar){
@@ -270,7 +314,7 @@ btnModificar.addEventListener("click", function(){
         TraerDatos();
         formulario.reset();
         botonesModificar.style.display = "none";
-
+        btnAlta.style.display = "flex";
     }
     else{
         alert("COMPLETE LOS CAMPOS");
@@ -342,7 +386,7 @@ function CalcularPromedio(datosLista){
 }
 
 /**********************************   *************************************************** */
-let opcionesCheck = document.getElementsByName("checkMostrar");
+// let opcionesCheck = document.getElementsByName("checkMostrar");
 
 opcionesCheck.forEach(elementCheck => {
     elementCheck.addEventListener("change", function(){
