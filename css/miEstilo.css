@@ -18,8 +18,10 @@ header{
 
 #imgHeader{
     width: 80px;
-    margin-left: 40px;
-    margin-top: 5px;
+    height: 80px;
+    /* height: ; */
+    /* margin-left: 40px;
+    margin-top: 5px; */
 }
 
 nav a{
